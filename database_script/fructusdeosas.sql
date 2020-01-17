@@ -19,6 +19,11 @@
 -- Table structure for table `datos_usuarios`
 --
 
+CREATE DATABASE IF NOT EXISTS fructusdeosas;
+
+USE fructusdeosas;
+
+
 DROP TABLE IF EXISTS `datos_usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
