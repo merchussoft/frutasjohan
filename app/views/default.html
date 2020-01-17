@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{{titulo}}{% endblock %}</title>
+    <link rel="stylesheet" href="{{root}}system/librerias/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{root}}system/librerias/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="{{root}}system/librerias/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{root}}system/librerias/swalalert/sweetalert.css">
+    <link rel="stylesheet" href="{{root}}system/librerias/datatables/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{root}}system/librerias/lib_plantilla/css/sb-admin.css">
+    {% block head %}
+    {% endblock %}
+</head>
+<body {% block body %}{% endblock %}>
+
+{%block navbar%}
+{%endblock%}
+
+<input type="hidden" id="pagina_principal" name="pagina_principal" value="{{root}}">
+
+<!--bloque de container -->
+<div id="container">{% block content %}{% endblock %}</div>
+
+<!--bloque del footer-->
+<!--<div id="footer">-->
+<!--    {% block footer %}-->
+<!--    &copy; Copyright 2011 by <a href="http://domain.invalid/">you</a>.-->
+<!--    {% endblock %}-->
+<!--</div>-->
+
+<!--bloque de script-->
+<script src="{{root}}system/librerias/jquery/jquery.min.js"></script>
+<script src="{{root}}system/librerias/jquery-ui/jquery-ui.js"></script>
+<script src="{{root}}system/librerias/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{root}}system/librerias/jquery-easing/jquery.easing.min.js"></script>
+<script src="{{root}}system/librerias/swalalert/sweetalert2@9.js"></script>
+<script src="{{root}}system/librerias/datatables/jquery.dataTables.min.js"></script>
+<script src="{{root}}system/librerias/lib_plantilla/js/sb-admin.js"></script>
+<script src="{{root}}assets/js_propios/funcion_general.js?version={{VERSIONJSCSS}}"></script>
+{% block scripts %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends "default.html" %}
+
+{%block body%}class="bg-dark"{%endblock%}
+
+{% block content %}
+
+<div class="card card-login mx-auto mt-5">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+        <form autocomplete="off" id="form_login">
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input type="text" id="inputUsuario" class="form-control" placeholder="Email address"
+                           required="required" autofocus="autofocus" name="inputUsuario">
+                    <label for="inputUsuario">Usuario</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                           required="required" name="inputPassword">
+                    <label for="inputPassword">Password</label>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</div>
+
+{%endblock %}
+
+{% block scripts%}
+<script src="{{root}}assets/js_propios/login.js?version={{VERSIONJSCSS}}"></script>
+{%endblock%}

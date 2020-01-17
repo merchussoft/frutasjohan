@@ -1,0 +1,150 @@
+{% extends "default_principal.html" %}
+
+{% block container_fluid %}
+
+<div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">{{pagina_actual}}</li>
+    </ol>
+
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalUsuario">
+                <i class="fas fa-user-plus"></i>
+                Agregar usuario
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="usuariosTable" width="100%" cellspacing="0"></table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--zonal modal-->
+<div class="modal" id="modalUsuario">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="modal-title">Ingresar usuario</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h4 class="form-group">Datos personales</h4>
+
+                <form id="formUsuarios" autocomplete="off">
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido">
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="documento">Cedula:</label>
+                            <input type="number" class="form-control" id="documento" name="documento">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="direccion">Direccion:</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion">
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="telefono">Telefono:</label>
+                            <input type="number" class="form-control" id="telefono" name="telefono">
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="cumpleanos">Fecha nacimiento:</label>
+                            <input type="text" class="form-control" id="cumpleanos" name="cumpleanos" readonly>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h4 class="form-group">Datos Sesion</h4>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="usuario">Usuario:</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario">
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="perfil">Perfil:</label>
+                            <select class="form-control" id="perfil" name="cod_perfil">
+                                <option value="">Seleccionar Perfil</option>
+                                {%for perfil in carga_inicial['perfil'] %}
+                                <option value="{{perfil.cod_perfil}}">{{perfil.nombre}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4 class="form-group">Salud</h4>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="grupo_sanguineo">Grupo sanguinneo:</label>
+                            <select class="form-control" id="grupo_sanguineo" name="cod_grupo_sanguineo">
+                                <option value="">Seleccionar Rh</option>
+                                {%for tipo_sangre in carga_inicial['Rh'] %}
+                                <option value="{{tipo_sangre.cod_grupo_sanguineo}}">{{tipo_sangre.tipo_sanguineo_rh}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="eps">Eps:</label>
+                            <select class="form-control" id="eps" name="cod_eps">
+                                <option value="">Seleccionar eps</option>
+                                {%for eps in carga_inicial['eps'] %}
+                                <option value="{{eps.cod_eps}}">{{eps.nombre_eps}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <label for="cesantias">Pension y cesantias:</label>
+                            <select class="form-control" id="cesantias" name="cesantias">
+                                <option value="">Seleccionar entidad</option>
+                                {%for cesantia in carga_inicial['cesantias'] %}
+                                <option value="{{cesantia.cod_pension_cesantias}}">{{cesantia.cesantias_pension}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" >Guardar usuario</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{%block scripts%}
+<script src="{{root}}assets/js_propios/usuarios.min.js?version={{VERSIONJSCSS}}"></script>
+{%endblock%}

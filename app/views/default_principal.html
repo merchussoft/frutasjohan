@@ -1,0 +1,40 @@
+{% extends "navbar.html" %}
+
+{%block content%}
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        {%for modulo in modulos %}
+        <li class="nav-item {%if active == modulo.cod_modulo%} active {%endif%}">
+            <a class="nav-link" href="{{root}}routing.php?modulo={{modulo.cod_modulo}}">
+                <i class="fas fa-fw {{modulo.icono}}"></i>
+                <span>{{modulo.nombre}}</span>
+            </a>
+        </li>
+        {%endfor%}
+
+
+    </ul>
+
+    <div id="content-wrapper">
+
+{% block container_fluid %} {%endblock%}
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Cergersoft 2020</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+</div>
+<!-- /#wrapper -->
+{%endblock%}
+
+{% block scripts %}
+<script src="{{root}}assets/js_propios/default_principal.js?version={{VERSIONJSCSS}}"></script>
+{% endblock %}
